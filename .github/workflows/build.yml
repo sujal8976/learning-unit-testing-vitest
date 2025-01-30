@@ -1,0 +1,25 @@
+name: Succeeds on PR on main
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  builds:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "22.12.0"
+
+      - name: Install Dependencies and Generate Prisma Client
+        run: npm install && npx prisma generate
+
+      - name: Run Test
+        run: npm test
