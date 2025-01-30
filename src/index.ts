@@ -63,8 +63,8 @@ app.post("/mul", async (req, res) => {
 
   await prisma.request.create({
     data: {
-      a: parsedResponse.data.b,
-      b: parsedResponse.data.a,
+      a: parsedResponse.data.a,
+      b: parsedResponse.data.b,
       answer: result,
       type: "Multiply",
     },
